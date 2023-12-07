@@ -1,0 +1,42 @@
+defaults:
+  - _self_
+  - method: metric
+  - problem: cubic
+  - override hydra/launcher: submitit_slurm
+  # - override hydra/launcher: submitit_local
+
+loadnew: False
+iters: 1000
+patience: 100
+earlystopping: True
+valfreq: 10
+seed: 0
+dataset_seed: 0
+pred_model: 'dense'
+verbose: False
+
+batchsize: ??
+pred_lr: ??
+
+model_kwargs: {}
+loss_kwargs: {}
+
+hydra:
+  run:
+    dir: ./exp/${now:%Y.%m.%d}/${now:%H%M}/${hydra.runtime.choices.problem}_${hydra.runtime.choices.method}_${dataset_seed}_${seed}
+  job:
+    chdir: True
+  sweep:
+    dir: ./exp/${now:%Y.%m.%d}/${now:%H%M}
+    subdir: ${hydra.runtime.choices.problem}_${hydra.runtime.choices.method}_${dataset_seed}_${seed}
+  launcher:
+    max_num_timeout: 100000
+    timeout_min: 420
+    partition: learnlab
+    mem_gb: 5
+    gpus_per_node: 1
+  # launcher:
+  #   timeout_min: 300
+  #   mem_gb: 5
+  #   nodes: 1
+  #   gpus_per_node: 1

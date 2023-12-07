@@ -1,0 +1,8 @@
+.DS_Store
+models
+core
+exp
+outputs
+*.png
+t
+data

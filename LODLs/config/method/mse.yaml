@@ -1,0 +1,6 @@
+# @package _global_
+
+loss: 'mse'
+
+loss_kwargs:
+    weight_decay: 0.0

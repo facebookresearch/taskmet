@@ -1,0 +1,15 @@
+# @package _global_
+
+loss: 'quad++' # 'quad++', 'quad', weightedmse, weightedmse++
+
+loss_kwargs:
+    weight_decay: 0.0
+    serial: False
+    sampling: 'random_hessian'
+    numsamples: 5000
+    samplingstd: 1.
+    losslr: 0.01
+
+    # Approach-Specific: Quadratic
+    quadrank: 20
+    quadalpha: 0

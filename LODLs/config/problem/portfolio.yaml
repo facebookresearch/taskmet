@@ -1,0 +1,15 @@
+# @package _global_
+
+layers: 2
+
+problem_cls: PortfolioOpt.PortfolioOpt
+problem_kwargs:
+    num_stocks: 50
+    alpha: 0.1
+    num_train_instances: 400
+    num_test_instances: 400
+    val_frac: 0.5
+    rand_seed: ${dataset_seed}
+
+batchsize: 100
+pred_lr: 1e-2 
