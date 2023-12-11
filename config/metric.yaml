@@ -1,0 +1,22 @@
+# @package _global_
+
+metric_kwargs:
+    num_hidden: 200
+    identity_init: False
+    identity_init_scale: 100.
+    
+model_kwargs:
+    prediction_batchsize: 10
+    implicit_diff_batchsize: 10
+    implicit_diff_mode: torchopt_normal_cg
+    implicit_diff_iters: 5
+    predictor_lr: ${pred_lr}
+    predictor_grad_norm_threshold: 1e-3
+    predictor_grad_clip_norm: 1e-0
+
+
+
+num_inner_iters_init: 500
+num_inner_iters: 100
+# pred_lr: 1e-3 # inner loss increases suddenly sometimes with 1e-2 #make sure this takes precedence over problem/pred_lr
+metric_lr: 1e-3
